@@ -12,18 +12,25 @@ class HealthManager: ObservableObject {
     
     let healthStore = HKHealthStore()
     @Published var activities: [String: Activity] = [:]
+    @Published var mockActivities: [String: Activity] = [
+        "todaySteps": Activity(id: 0, title: "Today Steps", subtitle: "Goal: 10,000", image: "figure.walk", amount: "12,143"),
+        "todayCalories": Activity(id: 1, title: "Today Calories", subtitle: "Goal: 900", image: "flame", amount: "1,241"),
+    ]
+
     
     init() {
         let steps = HKQuantityType(.stepCount)
         let calories = HKQuantityType(.activeEnergyBurned)
+        let workout = HKObjectType.workoutType()
 
-        let healthType: Set = [steps, calories]
+        let healthType: Set = [steps, calories, workout]
         
         Task {
             do {
                 try await healthStore.requestAuthorization(toShare:[], read: healthType)
                 fetchTodaySteps()
                 fetchTodayCalories()
+                fetchWeekRunningStatus()
             } catch {
                 print("error fetching health data")
             }
@@ -70,11 +77,33 @@ extension HealthManager {
             }
             
             let calorieBurned = quantity.doubleValue(for: .kilocalorie())
-             activity = Activity(id: 0, title: "Today Calories", subtitle: "Goal: 900", image: "flame", amount: calorieBurned.formattedString())
+             activity = Activity(id: 1, title: "Today Calories", subtitle: "Goal: 900", image: "flame", amount: calorieBurned.formattedString())
             DispatchQueue.main.async {
                 self.activities["todayCalories"] = activity
             }
         }
+        healthStore.execute(query)
+    }
+    
+    func fetchWeekRunningStatus() {
+        let workout = HKSampleType.workoutType()
+        let timePredicate = HKQuery.predicateForSamples(withStart: .startOfWeek, end: Date())
+        let workoutPredicate = HKQuery.predicateForWorkouts(with: .running)
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, workoutPredicate])
+        
+        let query = HKSampleQuery(sampleType: workout, predicate: workoutPredicate, limit: 25, sortDescriptors: nil) { _, sample, error in
+            guard let workouts = sample as? [HKWorkout], error == nil else {
+                print("error")
+                return
+            }
+            print("workouts ", workouts)
+            for workout in workouts {
+                print("workout ", workout.allStatistics)
+                print("workout duration ", workout.duration)
+                print("workout workoutActivityType ", workout.workoutActivityType)
+            }
+        }
+        
         healthStore.execute(query)
     }
 }
