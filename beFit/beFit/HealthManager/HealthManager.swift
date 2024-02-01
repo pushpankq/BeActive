@@ -96,14 +96,18 @@ extension HealthManager {
                 print("error")
                 return
             }
-            print("workouts ", workouts)
+            
+            var count: Int = 0
             for workout in workouts {
-                print("workout ", workout.allStatistics)
-                print("workout duration ", workout.duration)
-                print("workout workoutActivityType ", workout.workoutActivityType)
+                let duration = Int(workout.duration)/60
+                count += duration
+            }
+            
+            let activity = Activity(id: 2, title: "Running", subtitle: "Mins this week", image: "figure.walk", amount: "\(count) minutes")
+            DispatchQueue.main.async {
+                self.activities["weekRunning"] = activity
             }
         }
-        
         healthStore.execute(query)
     }
 }
