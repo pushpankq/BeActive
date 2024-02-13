@@ -1,0 +1,16 @@
+name: beFit
+options:
+  bundleIdPrefix: com.state.beFitUITests
+packages:
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire
+    majorVersion: 5.5.0
+targets:
+  beFit:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources:
+      - beFit
+    dependencies:
+      - package: Alamofire
