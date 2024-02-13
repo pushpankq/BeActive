@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0306C16DCD96760AEA1DB140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 906AF4484B82B418B6651A09 /* Assets.xcassets */; };
+		0C1FEBA82B7C01FB0070204A /* NewFile1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1FEBA72B7C01FB0070204A /* NewFile1.swift */; };
 		0FA5E10A2387D17AA19A3696 /* beFitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25D580A4E01C0326F0B66C4 /* beFitUITestsLaunchTests.swift */; };
 		11577504EAEA72F84A9413EC /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329320F4714A8D164C1D3DD5 /* ActivityCardView.swift */; };
 		17653683604EDC6F4FFEE217 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F1F9F1A3C043EEC6E62D60 /* Date+Extension.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		02E337302A9B38F2FB1704AC /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0A556530B163BD3F96FA20A8 /* beFitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beFitTests.swift; sourceTree = "<group>"; };
+		0C1FEBA72B7C01FB0070204A /* NewFile1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFile1.swift; sourceTree = "<group>"; };
 		329320F4714A8D164C1D3DD5 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		3312B0756CB23CED3D2BD6E6 /* beFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beFitApp.swift; sourceTree = "<group>"; };
 		3E02F832959A6B0C3F089308 /* beFit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = beFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				D4A66576DA02284CB2D5382B /* Extension */,
 				C9C5FD7167EDFC753CA05DE3 /* HealthManager */,
 				42C8FCC5563E5F17A8E34833 /* Preview Content */,
+				0C1FEBA72B7C01FB0070204A /* NewFile1.swift */,
 			);
 			path = beFit;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C1FEBA82B7C01FB0070204A /* NewFile1.swift in Sources */,
 				11577504EAEA72F84A9413EC /* ActivityCardView.swift in Sources */,
 				AADF9CAEF1E1386332BF1E83 /* BeFitTabView.swift in Sources */,
 				724B541D3FE76DF47DCF99AC /* ContentView.swift in Sources */,
